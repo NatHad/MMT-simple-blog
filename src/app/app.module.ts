@@ -56,6 +56,11 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
         path: 'blog',
         component: BlogAddComponent,
       },
+      {
+        path: 'blog/:id',
+        component: BlogAddComponent,
+      },
+
          ]),
   ],
   declarations: [
@@ -63,7 +68,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     BlogItemComponent,
     BlogListComponent,
     BlogAddComponent,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

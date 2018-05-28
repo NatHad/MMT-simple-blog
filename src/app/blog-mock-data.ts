@@ -21,7 +21,7 @@ export default [
     new Blog('First title', 'Naty', new Date(), 'kjvbdfovbdojfodlvbwpnrfeprf', ['holiday', 'project', 'uni'], BlogStatus.ACTIVE, 75),
     new Blog('First title', 'Naty', new Date(), 'kjvbdfovbdojfodlvbwpnrfeprf', ['holiday', 'project', 'uni'], BlogStatus.ACTIVE, 116),
     new Blog('First title', 'Naty', new Date(), 'kjvbdfovbdojfodlvbwpnrfeprf', ['holiday', 'project', 'uni'], BlogStatus.ACTIVE, 97),
-    new Blog('First title', 'Naty', new Date(), 'kjvbdfovbdojfodlvbwpnrfeprf', ['holiday', 'project', 'uni'], BlogStatus.ACTIVE, 108), 
+    new Blog('First title', 'Naty', new Date(), 'kjvbdfovbdojfodlvbwpnrfeprf', ['holiday', 'project', 'uni'], BlogStatus.ACTIVE, 108),
     new Blog('First title', 'Naty', new Date(), 'kjvbdfovbdojfodlvbwpnrfeprf', ['holiday', 'project', 'uni'], BlogStatus.INACTIVE, 39),
     new Blog('First title', 'Naty', new Date(), 'kjvbdfovbdojfodlvbwpnrfeprf', ['holiday', 'project', 'uni'], BlogStatus.ACTIVE, 14),
     new Blog('First title', 'Naty', new Date(), 'kjvbdfovbdojfodlvbwpnrfeprf', ['holiday', 'project', 'uni'], BlogStatus.ACTIVE, 25),

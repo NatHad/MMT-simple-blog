@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import BLOGS from '../blog-mock-data';
 import { Blog, BlogStatus } from '../blog.model';
 import { Router } from '@angular/router';
+import { BlogsService } from '../blogs.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -9,29 +10,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./blog-list.component.css']
 })
 export class BlogListComponent implements OnInit {
-   blogs = BLOGS;
-   sortedBlogs = BLOGS;
+  blogs: Blog[];
+  sortedBlogs: Blog[];
    editedBlog: Blog;
-
   isShowing15 = false;
   isShowingActivePosts = false;
-   constructor(private router: Router) { }
+   constructor(private router: Router, private blogsService: BlogsService) { }
+   getBlogs(): void {
+    this.blogsService.getBlogs()
+    .subscribe(
+      blogs => this.blogs = blogs,
+      );
+    }
    ngOnInit() {
-   this.sortPostsByDate();
-  }
+   this.getBlogs();
+     }
   sortPostsByDate() {
-    this.blogs = this.blogs.sort((a, b) => {
-      if (a.createdAtDate < b.createdAtDate) {
-        return 1;
-      } else if (a.createdAtDate > b.createdAtDate) {
-        return -1;
-      }
-      return 0;
-    });
+    if (this.blogs) {
+      this.blogs = this.blogs.sort((a, b) => {
+        if (a.createdAtDate < b.createdAtDate) {
+          return 1;
+        } else if (a.createdAtDate > b.createdAtDate) {
+          return -1;
+        }
+        return 0;
+      });
+    }
   }
-     navigateToBlog = function () {
-      this.router.navigateByUrl('/blog');
-};
+  editBlog(blog: Blog) {
+   this.router.navigate([ '/blog', blog.id]);
+
+  }
+
   onSelect(blog) {
     this.editedBlog = blog;
   }
@@ -41,18 +51,13 @@ export class BlogListComponent implements OnInit {
       this.blogs.splice(index, 1);
     }
   }
-  addBlog(blog: Blog): void {
-    this.blogs.push(blog);
-  }
   onChange(event: any) {
     this.filterPosts();
   }
   filterPosts() {
     if (!this.isShowing15 && !this.isShowingActivePosts) {
-     this.sortedBlogs = this.getAllPosts();
-      return;
+      this.sortedBlogs = this.blogs;
     }
-
     if (this.isShowing15 && this.isShowingActivePosts) {
     this.sortedBlogs = this.getLast15ActivePosts();
     } else if (this.isShowing15 && !this.isShowingActivePosts) {
@@ -64,25 +69,19 @@ export class BlogListComponent implements OnInit {
   getLast15Posts(): Blog[] {
     const last = this.blogs;
     if (last.length > 15 ) {
-      last.splice(0, 15);
+      return last.splice(0, 15);
     }
-    return last;
   }
 
   getLast15ActivePosts(): Blog[] {
     const last = this.blogs.filter(post => post.status === 'active');
     if (last.length > 15 ) {
-      last.splice(0, 15);
+      return last.splice(0, 15);
     }
-    return last;
   }
 
   getAllActivePosts(): Blog[] {
     const last = this.blogs.filter(post => post.status === 'active');
     return last;
   }
-
-  getAllPosts(): Blog[] {
-    return this.blogs;
-  }
-  }
+}

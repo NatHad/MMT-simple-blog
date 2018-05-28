@@ -1,9 +1,13 @@
-<form #form="ngForm" (ngSubmit)="onSubmit()" class="add-blog-form">
+<form #form="ngForm"  (ngSubmit)="onSubmit()" class="add-blog-form">
+    <mat-form-field class="input-full-width">
+        <input matInput type="text" placeholder="Product ID" name="id"
+          [(ngModel)]="editedPost.id" />
+      </mat-form-field>
     <mat-form-field class="full-width">
-      <input matInput placeholder="Title of blog post" name="title" [(ngModel)]="editedPost.title">
+      <input matInput placeholder="Title of blog editedPost" name="title" [(ngModel)]="editedPost.title">
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput placeholder="Author of blog post" name="author"[(ngModel)]="editedPost.author" >
+        <input matInput placeholder="Author of blog editedPost" name="author"[(ngModel)]="editedPost.author" >
       </mat-form-field>
       <mat-form-field>
           <input matInput [matDatepicker]="picker" placeholder="Date of  publishing" name="date"[(ngModel)]="editedPost.createdAtDate">
@@ -14,16 +18,16 @@
           <textarea matInput placeholder="Input content" name="content" [(ngModel)]="editedPost.content"></textarea>
         </mat-form-field>
       <mat-form-field class="full-width">
-          <input matInput placeholder="Keywords of blog post" name="keywords"[(ngModel)]="editedPost.keywords">
+          <input matInput placeholder="Keywords of blog editedPost" name="keywords"[(ngModel)]="editedPost.keywords">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput placeholder="Status of blog post: active/inactive" value="active" name="status"[(ngModel)]="editedPost.status">
+            <input matInput placeholder="Status of blog editedPost: active/inactive" value="active" name="status"[(ngModel)]="editedPost.status">
           </mat-form-field>
           <mat-form-field class="full-width">
-              <input matInput placeholder="Image URL of blog post" name="url" [(ngModel)]="editedPost.imageUrl">
+              <input matInput placeholder="Image URL of blog editedPost" name="url" [(ngModel)]="editedPost.imageUrl">
             </mat-form-field>
             <button type="submit" mat-raised-button color="primary"
-            [disabled]="form.invalid || form.pristine">Publish</button>
+            [disabled]="form.invalid || form.pristine">Save</button>
   </form>
 
 
