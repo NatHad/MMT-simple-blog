@@ -12,7 +12,7 @@ import { BlogsService } from '../blogs.service';
 export class BlogListComponent implements OnInit {
   blogs: Blog[];
   sortedBlogs: Blog[];
-   editedBlog: Blog;
+  editedBlog: Blog;
   isShowing15 = false;
   isShowingActivePosts = false;
    constructor(private router: Router, private blogsService: BlogsService) { }
@@ -24,6 +24,7 @@ export class BlogListComponent implements OnInit {
     }
    ngOnInit() {
    this.getBlogs();
+   this.sortedBlogs = this.blogs;
      }
   sortPostsByDate() {
     if (this.blogs) {
@@ -52,6 +53,7 @@ export class BlogListComponent implements OnInit {
     }
   }
   onChange(event: any) {
+    console.log(this.isShowing15);
     this.filterPosts();
   }
   filterPosts() {
@@ -82,6 +84,7 @@ export class BlogListComponent implements OnInit {
 
   getAllActivePosts(): Blog[] {
     const last = this.blogs.filter(post => post.status === 'active');
+    console.log(last);
     return last;
   }
 }
