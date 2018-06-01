@@ -2,10 +2,6 @@
 mat-chip {
   max-width: 70px;
 }
-mat-card{
-  -ms-word-break: break-all;
-  word-break: break-all;
-}
 
 .mat-header-cell.mat-sort-header-sorted {
   color: black;
@@ -38,4 +34,10 @@ flex: 0 0 50%;
 
 .mat-column-edit {
 flex: 0 0 7%;
+}
+.mat-card{
+  width: 300px;
+  height: 300px;
+  -ms-word-break: break-all;
+  word-break: break-all;
 }
