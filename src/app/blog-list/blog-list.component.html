@@ -1,5 +1,5 @@
-<!-- <mat-checkbox class="example-margin" color="warn" [(ngModel)]="isShowing15" (change)="onChange($event)">Show only last 15 posts</mat-checkbox> -->
-<!-- <mat-checkbox class="example-margin" color="warn" [(ngModel)]="isShowingActivePosts" (change)="onChange($event)">Show only active posts</mat-checkbox> -->
+<mat-checkbox class="example-margin" color="warn" [(ngModel)]="isShowing15" (change)="onChange($event)">Show only last 15 posts</mat-checkbox>
+<mat-checkbox class="example-margin" color="warn" [(ngModel)]="isShowingActivePosts" (change)="onChange($event)">Show only active posts</mat-checkbox>
 <mat-grid-list cols="4" role="list">
   <mat-grid-tile *ngFor="let blog of blogs" role="listitem">
     <mat-card class="example-card">
